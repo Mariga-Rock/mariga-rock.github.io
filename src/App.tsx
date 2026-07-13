@@ -209,12 +209,6 @@ function App() {
               <button onClick={goToCaseStudies} className="text-gray-300 hover:text-white transition-colors font-medium">
                 Case Studies
               </button>
-              <button
-                onClick={goHome}
-                className="bg-rose-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-rose-700 transition-all shadow-sm hover:shadow-md"
-              >
-                Get in Touch
-              </button>
             </div>
 
             {/* Mobile menu button */}
@@ -294,11 +288,11 @@ function App() {
                 </button>
               </div>
             </div>
-           <div className="lg:col-span-3">
+           <div className="lg:col-span-3 mt-2 animate-on-scroll">
             <img
   src={profilePic}
   alt="Maria Guryanova, Design Director" 
-  className="w-full h-[420px] object-cover"
+  className="w-full h-[360px] object-cover"
 /></div>
             </div>
           </div>
