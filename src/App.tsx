@@ -277,9 +277,9 @@ function App() {
               <p className="text-rose-600 font-semibold tracking-wide uppercase mb-2 animate-on-scroll">
                 US & APAC
               </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-3 animate-on-scroll">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-3 animate-on-scroll">
                 Maria Guryanova, Fractional Design Director for Enterprise B2B Products
-              </h1>
+              </h2>
               <p className="text-xl lg:text-2xl text-gray-600 mb-6 leading-relaxed max-w-3xl animate-on-scroll">
                 Design systems, UX strategy, and team mentorship to scale your product without hiring full-time.
                 <br />
@@ -301,15 +301,9 @@ function App() {
                 </button>
               </div>
             </div>
-            <div className="lg:col-span-2 animate-on-scroll">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 max-w-sm mx-auto lg:mx-0 lg:ml-auto">
-                <img
-                  src="https://media.licdn.com/dms/image/v2/C5603AQFMWk0yMQBrfg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1580125985060?e=2147483647&v=beta&t=AFxa-g8Xa3qUvph1PQ2ywd0Lcalz3Dr0EWxpjclp7yw"
-                  alt="Maria Guryanova, Design Director" 
-                  className="w-full h-[420px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent" />
-              </div>
+            <div className="w-full h-[420px] bg-gray-300 rounded-2xl flex items-center justify-center text-gray-500">
+  Photo
+</div>
             </div>
           </div>
         </div>
