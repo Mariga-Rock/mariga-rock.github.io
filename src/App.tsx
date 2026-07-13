@@ -273,8 +273,8 @@ function App() {
       {/* Hero Section */}
       <section className="bg-gray-50 pt-28 pb-12 lg:pt-32 lg:pb-16 text-left min-h-[80vh] flex items-center">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
-          <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
-            <div className="max-w-4xl lg:col-span-3">
+         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+  <div className="max-w-4xl lg:col-span-7">
               <p className="text-rose-600 font-semibold tracking-wide uppercase mb-2 animate-on-scroll">
                 US & APAC
               </p>
@@ -302,11 +302,12 @@ function App() {
                 </button>
               </div>
             </div>
+           <div className="lg:col-span-5">
             <img
   src={profilePic}
   alt="Maria Guryanova, Design Director" 
   className="w-full h-[420px] object-cover"
-/>
+/></div>
             </div>
           </div>
  
