@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   base: '/fdd-portfolio/',
   build: {
-    outDir: 'root'
+    outDir: 'dist'
   }
 });
