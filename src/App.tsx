@@ -209,6 +209,12 @@ function App() {
               <button onClick={goToCaseStudies} className="text-gray-300 hover:text-white transition-colors font-medium">
                 Case Studies
               </button>
+              <button
+  onClick={handleContactClick}
+  className="text-gray-300 hover:text-white transition-colors font-medium"
+>
+  Contact
+</button>
             </div>
 
             {/* Mobile menu button */}
@@ -250,6 +256,15 @@ function App() {
               >
                 Case Studies
               </button>
+              <button
+  onClick={() => {
+    setIsMenuOpen(false);
+    handleContactClick();
+  }}
+  className="block w-full text-left py-2 text-gray-300 hover:text-white font-medium"
+>
+  Contact
+</button>
             </div>
           )}
         </div>
