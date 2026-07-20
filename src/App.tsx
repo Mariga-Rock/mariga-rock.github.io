@@ -4,7 +4,6 @@ import {
   Users,
   FileSearch,
   ChevronRight,
-  Mail,
   Linkedin,
   ArrowUpRight,
   CheckCircle,
@@ -134,9 +133,15 @@ function App() {
 
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  // 👇 ВСЕ ФУНКЦИИ ОПРЕДЕЛЯЕМ ЗДЕСЬ, ДО ЛЮБЫХ useEffect И УСЛОВНЫХ РЕНДЕРОВ
   const goHome = () => setView('home');
   const goToCaseStudies = () => setView('case-studies');
+
+  const goToAbout = () => {
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+  };
+  const goToServices = () => {
+    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const handleContactClick = () => {
     if (view !== 'home') {
@@ -149,7 +154,6 @@ function App() {
     }
   };
 
-  // useEffect и остальные хуки
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -196,12 +200,10 @@ function App() {
     }
   };
 
-  // 👇 ТЕПЕРЬ УСЛОВНЫЙ РЕНДЕР ИДЁТ ПОСЛЕ ОПРЕДЕЛЕНИЯ ВСЕХ ФУНКЦИЙ
   if (view === 'case-studies') {
     return <CaseStudiesPage onBack={goHome} />;
   }
 
-  // 👇 ОСТАЛЬНОЙ КОД (ГЛАВНАЯ СТРАНИЦА) — БЕЗ ИЗМЕНЕНИЙ
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -215,28 +217,22 @@ function App() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <button onClick={goHome} className="text-gray-300 hover:text-white transition-colors font-medium">
+              <button onClick={goToAbout} className="text-gray-300 hover:text-white transition-colors font-medium">
                 About
               </button>
-              <button onClick={goHome} className="text-gray-300 hover:text-white transition-colors font-medium">
+              <button onClick={goToServices} className="text-gray-300 hover:text-white transition-colors font-medium">
                 Services
               </button>
               <button onClick={goToCaseStudies} className="text-gray-300 hover:text-white transition-colors font-medium">
                 Case Studies
               </button>
-              <button
-                onClick={handleContactClick}
-                className="text-gray-300 hover:text-white transition-colors font-medium"
-              >
+              <button onClick={handleContactClick} className="text-gray-300 hover:text-white transition-colors font-medium">
                 Contact
               </button>
             </div>
 
             {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-300"
-            >
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-gray-300">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
@@ -247,7 +243,7 @@ function App() {
               <button
                 onClick={() => {
                   setIsMenuOpen(false);
-                  goHome();
+                  goToAbout();
                 }}
                 className="block w-full text-left py-2 text-gray-300 hover:text-white font-medium"
               >
@@ -256,7 +252,7 @@ function App() {
               <button
                 onClick={() => {
                   setIsMenuOpen(false);
-                  goHome();
+                  goToServices();
                 }}
                 className="block w-full text-left py-2 text-gray-300 hover:text-white font-medium"
               >
@@ -290,11 +286,9 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 sm:px-4 lg:px-8 w-full">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="max-w-4xl lg:col-span-9">
-              <p className="text-rose-600 font-semibold tracking-wide uppercase mb-2 animate-on-scroll">
-                US & APAC
-              </p>
+              <p className="text-rose-600 font-semibold tracking-wide uppercase mb-2 animate-on-scroll">US & APAC</p>
               <h1 className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-3 animate-on-scroll">
-                Maria Guryanova 
+                Maria Guryanova
               </h1>
               <p className="text-xl lg:text-2xl text-gray-600 mb-6 leading-relaxed max-w-3xl font-bold animate-on-scroll">
                 Fractional Design Director for Enterprise B2B Products
@@ -321,11 +315,51 @@ function App() {
               </div>
             </div>
             <div className="lg:col-span-3 mt-3 animate-on-scroll">
-              <img
-                src={profilePic}
-                alt="Maria Guryanova, Design Director" 
-                className="w-full h-[300px] object-cover"
-              />
+              <img src={profilePic} alt="Maria Guryanova, Design Director" className="w-full h-[300px] object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-14 lg:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <h2 className="text-sm font-semibold text-rose-600 uppercase tracking-wide mb-3 animate-on-scroll">About</h2>
+              <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 animate-on-scroll">
+                13+ Years of Shipping Enterprise Products and Design Leadership
+              </h3>
+              <div className="space-y-4 text-gray-600 text-lg leading-relaxed animate-on-scroll">
+                <p>
+                  Enterprise-grade design systems and UX strategy — I help you scale your product and
+                  teams faster, with fewer iterations. No full-time commitment required.
+                </p>
+                <p>
+                  After 10+ years of designing complex B2B systems for US enterprises, I'm now focusing
+                  on helping APAC startups and scale-ups build world-class design infrastructure that scales with them - design systems, component libraries, and the teams to manage it all.
+                </p>
+                <p>
+                  I bridge the gap between design and engineering, mentoring teams to ship better products, faster. My approach is systematic, business driven and tailored to the unique challenges of fast growing APAC companies.
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 animate-on-scroll">
+              <div className="bg-white rounded-2xl p-6 border border-gray-100">
+                <Boxes className="w-10 h-10 text-rose-600 mb-3" />
+                <div className="text-4xl lg:text-5xl font-bold text-rose-600 mb-2">3+</div>
+                <div className="text-gray-500 font-small">Design systems built</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-100">
+                <Rocket className="w-10 h-10 text-rose-600 mb-3" />
+                <div className="text-4xl lg:text-5xl font-bold text-rose-600 mb-2">8</div>
+                <div className="text-gray-500 font-small">Products shipped</div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-100">
+                <UsersRound className="w-10 h-10 text-rose-600 mb-3" />
+                <div className="text-4xl lg:text-5xl font-bold text-rose-600 mb-2">5+</div>
+                <div className="text-gray-500 font-small">Led teams of this size</div>
+              </div>
             </div>
           </div>
         </div>
@@ -335,15 +369,9 @@ function App() {
       <section id="services" className="py-14 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <h2 className="text-sm font-semibold text-rose-600 uppercase tracking-wide mb-3 animate-on-scroll">
-              Services
-            </h2>
-            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 animate-on-scroll">
-              How I Can Help Your Business
-            </h3>
-            <p className="text-gray-600 text-lg animate-on-scroll">
-              Strategic design leadership tailored to your stage and needs
-            </p>
+            <h2 className="text-sm font-semibold text-rose-600 uppercase tracking-wide mb-3 animate-on-scroll">Services</h2>
+            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 animate-on-scroll">How I Can Help Your Business</h3>
+            <p className="text-gray-600 text-lg animate-on-scroll">Strategic design leadership tailored to your stage and needs</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -352,9 +380,7 @@ function App() {
               <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-5 group-hover:bg-rose-600 transition-colors">
                 <Layers className="w-7 h-7 text-rose-600 group-hover:text-white transition-colors" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                Design System as a Service
-              </h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Design System as a Service</h4>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Audit, build, and implement a scalable design system with code components. Establish
                 consistent design language across your product suite.
@@ -382,9 +408,7 @@ function App() {
               <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-5 group-hover:bg-rose-600 transition-colors">
                 <Users className="w-7 h-7 text-rose-600 group-hover:text-white transition-colors" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                Fractional Design Director
-              </h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Fractional Design Director</h4>
               <p className="text-gray-600 leading-relaxed mb-6">
                 Enterprise-grade design leadership, available part-time. I step in as your design director - running design reviews, mentoring your team, shaping product design.
                 All for a fraction of a full-time cost.
@@ -412,9 +436,7 @@ function App() {
               <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-5 group-hover:bg-rose-600 transition-colors">
                 <FileSearch className="w-7 h-7 text-rose-600 group-hover:text-white transition-colors" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">
-                UX Audit & Roadmap
-              </h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">UX Audit & Roadmap</h4>
               <p className="text-gray-600 leading-relaxed mb-6">
                 In-depth analysis of your B2B product. I deliver a prioritized roadmap and improve user satisfaction, reduce churn and increase conversion. You get a strategic plan.
                 Identify quick wins and long-term improvements.
@@ -440,65 +462,13 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-14 lg:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 px-4 sm:px-6 lg:px-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <h2 className="text-sm font-semibold text-rose-600 uppercase tracking-wide mb-3 animate-on-scroll">
-                About
-              </h2>
-              <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 animate-on-scroll">
-                13+ Years of Shipping Enterprise Products and Design Leadership
-              </h3>
-              <div className="space-y-4 text-gray-600 text-lg leading-relaxed animate-on-scroll">
-                <p>
-                  Enterprise-grade design systems and UX strategy — I help you scale your product and
-                  teams faster, with fewer iterations. No full-time commitment required.
-                </p>
-                <p>
-                  After 10+ years of designing complex B2B systems for US enterprises, I'm now focusing
-                  on helping APAC startups and scale-ups build world-class design infrastructure that scales with them - design systems, component libraries, and the teams to manage it all.
-                </p>
-                <p>
-                  I bridge the gap between design and engineering, mentoring teams to ship better products, faster. My approach is systematic, business driven and tailored to the unique challenges of fast growing APAC companies
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 animate-on-scroll">
-              <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                <Boxes className="w-10 h-10 text-rose-600 mb-3" />
-                <div className="text-4xl lg:text-5xl font-bold text-rose-600 mb-2">3+</div>
-                <div className="text-gray-500 font-small">Design systems built</div>
-              </div>
-              <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                <Rocket className="w-10 h-10 text-rose-600 mb-3" />
-                <div className="text-4xl lg:text-5xl font-bold text-rose-600 mb-2">8</div>
-                <div className="text-gray-500 font-small">Products shipped</div>
-              </div>
-              <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                <UsersRound className="w-10 h-10 text-rose-600 mb-3" />
-                <div className="text-4xl lg:text-5xl font-bold text-rose-600 mb-2">5+</div>
-                <div className="text-gray-500 font-small">Led teams of this size</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies Section */}
+      {/* Case Studies Section (на главной) */}
       <section id="case-studies" className="py-14 lg:py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <h2 className="text-sm font-semibold text-rose-400 uppercase tracking-wide mb-3 animate-on-scroll">
-              Case Studies
-            </h2>
-            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 animate-on-scroll">
-              Proven Results Across Industries
-            </h3>
-            <p className="text-gray-300 text-lg animate-on-scroll">
-              Selected projects from enterprise clients in fintech, biotech, and SaaS
-            </p>
+            <h2 className="text-sm font-semibold text-rose-400 uppercase tracking-wide mb-3 animate-on-scroll">Case Studies</h2>
+            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 animate-on-scroll">Proven Results Across Industries</h3>
+            <p className="text-gray-300 text-lg animate-on-scroll">Selected projects from enterprise clients in fintech, biotech, and SaaS</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -545,12 +515,8 @@ function App() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Contact Info */}
             <div className="animate-on-scroll">
-              <h2 className="text-sm font-semibold text-rose-400 uppercase tracking-wide mb-3">
-                Contact
-              </h2>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                Available for UTC +8
-              </p>
+              <h2 className="text-sm font-semibold text-rose-400 uppercase tracking-wide mb-3">Contact</h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-8">Available for UTC +8</p>
               <p className="text-gray-300 text-lg leading-relaxed mb-8">
                 Ready to elevate your product's design? Book a free discovery call
                 to discuss your challenges and see if we're a good fit.
@@ -569,9 +535,7 @@ function App() {
               </div>
 
               <div className="mt-10 pt-8 border-t border-gray-700">
-                <p className="text-sm text-gray-400">
-                  Serving startups and scale-ups across APAC.
-                </p>
+                <p className="text-sm text-gray-400">Serving startups and scale-ups across APAC.</p>
               </div>
             </div>
 
@@ -581,16 +545,12 @@ function App() {
                 <div className="flex flex-col items-center justify-center py-12 text-center">
                   <CheckCircle className="w-16 h-16 text-rose-400 mb-4" />
                   <h4 className="text-xl font-semibold text-white mb-2">Message Sent!</h4>
-                  <p className="text-gray-300">
-                    I'll get back to you within 24-48 hours.
-                  </p>
+                  <p className="text-gray-300">I'll get back to you within 24-48 hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                      Name
-                    </label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
                     <input
                       type="text"
                       id="name"
@@ -602,9 +562,7 @@ function App() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email
-                    </label>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
                     <input
                       type="email"
                       id="email"
@@ -616,9 +574,7 @@ function App() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                      Message
-                    </label>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
                     <textarea
                       id="message"
                       required
@@ -675,12 +631,8 @@ function CaseStudiesPage({ onBack }: { onBack: () => void }) {
       {/* Header */}
       <section className="hero-gradient pt-28 pb-12 lg:pt-32 lg:pb-16">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <p className="text-rose-400 font-semibold tracking-wide uppercase mb-2 animate-on-scroll">
-            Case Studies
-          </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 animate-on-scroll">
-            Proven Results Across Industries
-          </h1>
+          <p className="text-rose-400 font-semibold tracking-wide uppercase mb-2 animate-on-scroll">Case Studies</p>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 animate-on-scroll">Proven Results Across Industries</h1>
           <p className="text-xl text-gray-300 max-w-3xl animate-on-scroll">
             Selected projects from enterprise clients in fintech, biotech, and SaaS — with the
             challenge, approach, and measurable outcomes for each.
@@ -753,12 +705,8 @@ function CaseStudiesPage({ onBack }: { onBack: () => void }) {
       {/* CTA */}
       <section className="py-14 lg:py-20 bg-gray-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 animate-on-scroll">
-            Want results like these?
-          </h2>
-          <p className="text-gray-300 text-lg mb-8 animate-on-scroll">
-            Book a free discovery call to discuss your product and how we'd work together.
-          </p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 animate-on-scroll">Want results like these?</h2>
+          <p className="text-gray-300 text-lg mb-8 animate-on-scroll">Book a free discovery call to discuss your product and how we'd work together.</p>
           <button
             onClick={onBack}
             className="inline-flex items-center justify-center bg-rose-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-rose-700 transition-all shadow-lg hover:shadow-xl group"
