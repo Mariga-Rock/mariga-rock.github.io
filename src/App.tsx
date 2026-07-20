@@ -41,7 +41,78 @@ type CaseStudy = {
 };
 
 const caseStudies: CaseStudy[] = [
-  // ... (массив caseStudies без изменений, оставь свой)
+  {
+    id: 'nsd',
+    industry: 'Fintech',
+    icon: 'briefcase',
+    title: 'National State Depositary',
+    location: 'Russia',
+    challenge:
+      'Create a new product UI and UX for a state depositary platform. The legacy UI could not scale, looked outdated, and forced operators to jump across five disconnected systems to complete a single workflow.',
+    approach:
+      'Built a modular design system with real-time data visualization components. Unified five legacy systems into a single UX system with a shared component library, consistent interaction patterns, and a scalable token architecture. Ran collaborative design-engineering workshops to align stakeholders on the target architecture.',
+    result:
+      '60% reduction in UI bugs, a new umbrella design system, strong scalability, and a light, top-notch UI. Operators now complete core workflows in one system instead of five.',
+    details: {
+      scope: 'End-to-end product UX/UI redesign + design system',
+      duration: '14 months',
+      team: '5 designers, 3 frontend engineers',
+      outcomes: [
+        '60% reduction in UI-related defects',
+        '5 legacy systems unified into 1 UX system',
+        'Reusable component library adopted across product suite',
+        'Faster onboarding for new operators',
+      ],
+    },
+  },
+  {
+    id: 'bostongene',
+    industry: 'Biotech',
+    icon: 'target',
+    title: 'BostonGene',
+    location: 'United States',
+    challenge:
+      'Design the product UI and UX from scratch for a biotech startup. The platform needed to present complex genomic and clinical data to two very different user roles without overwhelming either.',
+    approach:
+      'Designed the information architecture, data dashboards, and complex controls. Created customer journey maps for two user roles (researchers and clinicians), validated flows with stakeholders, and established a systematic visual language that could grow with the product.',
+    result:
+      'The startup now has a light, clear, and systematic design that scales. Both user roles get role-tailored dashboards, and the team can ship new features against a stable design foundation.',
+    details: {
+      scope: 'Product UX/UI from scratch + design language',
+      duration: '9 months',
+      team: '3 designers, 4 engineers',
+      outcomes: [
+        'Role-based dashboards for researchers and clinicians',
+        'Clear information architecture for complex genomic data',
+        'Systematic, scalable visual language',
+        'Faster feature delivery post-launch',
+      ],
+    },
+  },
+  {
+    id: 'netcracker',
+    industry: 'SaaS',
+    icon: 'trending',
+    title: 'B2B Analytics Dashboard',
+    location: 'NetCracker, NEC Corporation',
+    challenge:
+      'Redesign the UI of a mature B2B analytics dashboard while preserving every legacy function. The product had years of accumulated features and a user base that depended on exact workflows.',
+    approach:
+      'Ran a full investigation of the product and user experience, mapping every existing function before any visual change. Then executed a full redesign that modernized the visual layer and interaction model without removing capability.',
+    result:
+      'A new version of the product that looks and feels modern, keeps all legacy functions intact, and is significantly easier for new users to learn.',
+    details: {
+      scope: 'Full UX investigation + UI redesign',
+      duration: '11 months',
+      team: '4 designers, 6 engineers',
+      outcomes: [
+        'Modern UI with all legacy functions preserved',
+        'Documented map of every existing feature',
+        'Improved learnability for new users',
+        'Foundation for future module expansion',
+      ],
+    },
+  },
 ];
 
 const industryIcon = (icon: CaseStudy['icon']) => {
